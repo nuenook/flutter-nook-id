@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(home: NookCard()));
 
-class NookCard extends StatelessWidget {
+class NookCard extends StatefulWidget {
+  @override
+  _NookCardState createState() => _NookCardState();
+}
+
+class _NookCardState extends State<NookCard> {
+  int nookLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,6 +19,15 @@ class NookCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            nookLevel  += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
           padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -24,7 +40,10 @@ class NookCard extends StatelessWidget {
                   radius: 40,
                 ),
               ),
-              Divider(height: 60, color: Colors.grey[800],),
+              Divider(
+                height: 60,
+                color: Colors.grey[800],
+              ),
               Text(
                 'NAME',
                 style: TextStyle(
@@ -51,7 +70,7 @@ class NookCard extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                '8',
+                '$nookLevel',
                 style: TextStyle(
                     color: Colors.amberAccent[200],
                     letterSpacing: 2.0,
@@ -67,11 +86,11 @@ class NookCard extends StatelessWidget {
                   ),
                   SizedBox(width: 10),
                   Text('nookittipon@gmail.com',
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18.0,
-                    letterSpacing: 1.0,
-                  )),
+                      style: TextStyle(
+                        color: Colors.grey[400],
+                        fontSize: 18.0,
+                        letterSpacing: 1.0,
+                      )),
                 ],
               ),
             ],
